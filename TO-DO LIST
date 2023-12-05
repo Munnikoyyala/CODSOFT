@@ -1,0 +1,46 @@
+class ToDoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+        print(f"Task '{task}' added successfully!")
+
+    def update_task(self, old_task, new_task):
+        if old_task in self.tasks:
+            index = self.tasks.index(old_task)
+            self.tasks[index] = new_task
+            print(f"Task '{old_task}' updated to '{new_task}'.")
+        else:
+            print(f"Task '{old_task}' not found.")
+
+    def view_tasks(self):
+        print("\nTo-Do List:")
+        for task in self.tasks:
+            print(f"- {task}")
+        print()
+
+def main():
+    todo_list = ToDoList()
+
+    while True:
+        print("1. Add Task\n2. Update Task\n3. View Tasks\n4. Exit")
+        choice = input("Enter your choice (1/2/3/4): ")
+
+        if choice == '1':
+            task = input("Enter the task: ")
+            todo_list.add_task(task)
+        elif choice == '2':
+            old_task = input("Enter the task to update: ")
+            new_task = input("Enter the new task: ")
+            todo_list.update_task(old_task, new_task)
+        elif choice == '3':
+            todo_list.view_tasks()
+        elif choice == '4':
+            print("Exiting the To-Do List application. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please enter a valid option.")
+
+if __name__ == "__main__":
+    main()
